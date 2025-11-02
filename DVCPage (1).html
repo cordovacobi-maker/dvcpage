@@ -1,0 +1,669 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Davao Vision Colleges, Inc.</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    /* Navigation Bar */
+    .navbar {
+      background-color: #00446b;
+      color: #fff;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 30px;
+      flex-wrap: wrap;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .logo-container {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+
+    .logo {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+    }
+
+    .college-info h1 {
+      font-size: 1.2rem;
+      font-weight: 600;
+    }
+
+    .college-info p {
+      font-size: 0.9rem;
+      color: #d0c4ff;
+    }
+
+    .nav-links {
+      list-style: none;
+      display: flex;
+      gap: 25px;
+    }
+
+    .nav-links li a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: 600;
+      padding: 8px 14px;
+      border-radius: 8px;
+      transition: background 0.3s ease;
+    }
+
+    .nav-links li a:hover,
+    .nav-links li a.active {
+      background-color: #42e8f4;
+    }
+
+    /* Sections */
+    section {
+      text-align: center;
+      padding: 60px 20px;
+      animation: fadeIn 0.6s ease-in-out;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    section h2 {
+      color: #004d6b;
+      font-size: 2rem;
+      margin-bottom: 20px;
+    }
+
+    section p {
+      max-width: 800px;
+      margin: 0 auto 25px;
+      font-size: 1rem;
+      color: #333;
+      line-height: 1.7;
+    }
+
+    /* Home Section Image (1500 width) */
+    #home img {
+      width: 1500px;
+      max-width: 100%;
+      border-radius: 20px;
+      margin-top: 20px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+    }
+
+    /* Other Sections: Two Images (600 width each) */
+    .image-row {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 20px;
+      margin-top: 20px;
+    }
+	#about img {
+  width: 1000px;
+  max-width: 100%;
+  border-radius: 20px;
+  margin-top: 20px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+}
+
+
+    .image-row img {
+      width: 600px;
+      max-width: 100%;
+      border-radius: 15px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+      transition: transform 0.3s ease;
+    }
+
+    .image-row img:hover {
+      transform: scale(1.03);
+    }
+
+    /* Background Colors */
+    #home { background-color: #eef9ff; }
+    #events { background-color: #fef6e4; }
+    #about { background-color: #f7f5fc; }
+    #admissions { background-color: #eef9ff; }
+    #campus { background-color: #fef6e4; }
+    #contact { background-color: #f7f5fc; }
+
+    /* Footer */
+    footer {
+      background-color: #00496b;
+      color: #fff;
+      text-align: center;
+      padding: 15px;
+      font-size: 0.9rem;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .navbar {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .nav-links {
+        flex-wrap: wrap;
+        gap: 10px;
+        margin-top: 10px;
+      }
+
+      .college-info h1 {
+        font-size: 1rem;
+      }
+
+      section h2 {
+        font-size: 1.6rem;
+      }
+
+      .image-row img {
+        width: 100%;
+      }
+    }
+	:root {
+      --accent: #00446b;
+      --accent-light: #42e8f4;
+      --text-muted: #555;
+      --bg: #f7f5fc;
+      --card: #fff;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+	#timeline {
+	background-color: var(--bg);
+	color: #222;
+	padding: 40px 20px;
+	}
+
+
+    h1 {
+      text-align: center;
+      color: var(--accent);
+      margin-bottom: 40px;
+      font-size: 2rem;
+    }
+
+    .timeline-container {
+      position: relative;
+      max-width: 1000px;
+      margin: 0 auto;
+      padding-left: 40px;
+    }
+
+    /* Vertical Line */
+    .timeline-container::before {
+      content: '';
+      position: absolute;
+      left: 20px;
+      top: 0;
+      bottom: 0;
+      width: 4px;
+      background: linear-gradient(to bottom, var(--accent), var(--accent-light));
+      border-radius: 2px;
+    }
+
+    /* Timeline Item */
+    .timeline-item {
+      display: flex;
+      gap: 30px;
+      margin-bottom: 50px;
+      position: relative;
+    }
+
+    /* Dot */
+    .timeline-item::before {
+      content: '';
+      position: absolute;
+      left: 10px;
+      top: 10px;
+      width: 20px;
+      height: 20px;
+      background-color: var(--card);
+      border: 4px solid var(--accent);
+      border-radius: 50%;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+    }
+
+    /* Date */
+    .timeline-date {
+      min-width: 100px;
+      text-align: right;
+      font-weight: 600;
+      color: var(--accent);
+      font-size: 1rem;
+      padding-top: 5px;
+    }
+
+    /* Content Card */
+    .timeline-content {
+      background-color: var(--card);
+      padding: 15px 20px;
+      border-radius: 12px;
+      box-shadow: 0 6px 14px rgba(0, 0, 0, 0.08);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .timeline-content:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.12);
+    }
+
+    .timeline-content h3 {
+      margin-bottom: 8px;
+      color: #0f172a;
+      font-size: 1.1rem;
+    }
+
+    .timeline-content p {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      line-height: 1.6;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .timeline-container {
+        padding-left: 30px;
+      }
+
+      .timeline-item {
+        flex-direction: column;
+        gap: 10px;
+      }
+
+      .timeline-date {
+        text-align: left;
+        font-size: 0.95rem;
+        color: var(--accent);
+      }
+    }
+	
+
+  </style>
+</head>
+<body>
+
+  <!-- Navigation -->
+  <header>
+    <nav class="navbar">
+      <div class="logo-container">
+        <img src="https://edukasyon-production.s3.amazonaws.com/uploads/school/avatar/2051/davao_vision.jpg" alt="DVC Logo" class="logo">
+        <div class="college-info">
+          <h1>DAVAO VISION COLLEGES, INC.</h1>
+          <p>We Value Peace</p>
+        </div>
+      </div>
+
+      <ul class="nav-links">
+        <li><a href="#home" class="active">Home</a></li>
+        <li><a href="#events">Events and News</a></li>
+        <li><a href="#about">About DVC</a></li>
+        <li><a href="#admissions">Admissions</a></li>
+        <li><a href="#campus">Campus Life</a></li>
+        <li><a href="#contact">Contact Us</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Home Section -->
+  <section id="home">
+    <h2>Welcome to Davao Vision Colleges</h2>
+    <p>Building a future guided by knowledge, faith, and service.</p>
+    <img src="https://scontent.fdvo2-1.fna.fbcdn.net/v/t39.30808-6/573117491_2601944370181363_7348706807579682805_n.jpg?stp=cp6_dst-jpg_tt6&_nc_cat=109&ccb=1-7&_nc_sid=833d8c&_nc_eui2=AeEGw58FnOAfKRwfkOuQwwzynd273qg105Gd3bveqDXTkUSYBWTnTyQ-FqOiM5Nx355LqMYuUz_1Fdgy_6ZDUrBE&_nc_ohc=K-E41UOobq8Q7kNvwH7Pg4K&_nc_oc=AdmR3GivZQHKQZGK2BqUdPyvNxHgVcXer_bn89OtcbJFvI6wNHUmFB5P09rCQ11hy8E&_nc_zt=23&_nc_ht=scontent.fdvo2-1.fna&_nc_gid=Ga3G1se0Vcn8TMlVZZ3_Aw&oh=00_AfeT_dae-WwkHVjd_SBqwBsI7nMbi96RFW6jASNurLIivQ&oe=6909FEDC" alt="DVC Main Building">
+  </section>
+
+  <!-- Events Section -->
+  <section id="events">
+    <h2>Events and News</h2>
+    <p>Stay updated with the latest happenings and announcements from Davao Vision Colleges.</p>
+    <div class="image-row">
+      <img src="https://scontent.fdvo2-1.fna.fbcdn.net/v/t39.30808-6/571237106_2602872373421896_2728364127146511420_n.jpg?_nc_cat=102&ccb=1-7&_nc_sid=833d8c&_nc_eui2=AeGGezV-wClEb2kGtv3503Pfi912Rt-3V1eL3XZG37dXVy7NfACmH3AVbLQtTGPBq0ha_qafT3fWB2QOxc4tJoZ8&_nc_ohc=yOay6YZ7sg4Q7kNvwEZQcjM&_nc_oc=AdlE35s62k2l-T6T2HkbTq7Ayl6nAQTsbCqZ7STZke801OqmDelOoAGuQNWHKY7Cshg&_nc_zt=23&_nc_ht=scontent.fdvo2-1.fna&_nc_gid=zSDyBIzJDAoTUUGPHv-qCw&oh=00_AfezfTPQJ6RuCbC9R7ybpSaElAGEu-Stfo7ZPEgWgQwYlA&oe=690A0CF5" alt="Event 1">
+      <img src="https://scontent.fdvo2-1.fna.fbcdn.net/v/t39.30808-6/574242484_2602872380088562_888662305586087080_n.jpg?_nc_cat=108&ccb=1-7&_nc_sid=833d8c&_nc_eui2=AeGNOwliKL60wsvS3GvDfNiBs_ScAPDZ6Pez9JwA8Nno9_NQCtUM3LUVCrhqGw8JpjChR9N5i6DBy-rssYME5qQm&_nc_ohc=U51USb_As5AQ7kNvwH2edfD&_nc_oc=AdmYVFuprJ-gtMa1Y1g0NIwb1nGlPWAg3VaQiIbgtixR7624tsvZlnveS_ZTiGCNLn4&_nc_zt=23&_nc_ht=scontent.fdvo2-1.fna&_nc_gid=XTKct6sceNoVUU1UfqBIqw&oh=00_AfeWb4n5u9HWyR0KjgkyartqUtFF2DonrPusSUELcd09HQ&oe=6909F1B0" alt="Event 2">
+	  
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section id="about">
+    <h2>About Davao Vision Colleges</h2>
+	<img src = "https://scontent.fcgy2-4.fna.fbcdn.net/v/t39.30808-6/572388102_2558161051244379_1136146746824357685_n.jpg?_nc_cat=108&ccb=1-7&_nc_sid=127cfc&_nc_eui2=AeEUSfJHdMrAbxuWZfwLl3nfTrvuUcNbFfpOu-5Rw1sV-rSTWOLQfHKHKDTG2xd3oQAaRmLFiFxlTsnyiD4Ufr-w&_nc_ohc=Y6OIPcVtGLQQ7kNvwFCaOiM&_nc_oc=AdntWi9cgHx24i7mlK6UVHjIyHtruwP79-85rEzsqfazVzPd-tjbDPhgPegVAp26BtU&_nc_zt=23&_nc_ht=scontent.fcgy2-4.fna&_nc_gid=CR64rFfKxwixaNDn_KLt2A&oh=00_AffkLvQgm0M_B6h5fS7I28wlOdsxePlpKc0XXhqJoukerQ&oe=690A9C0E" alt = "DVC Building in 2009">
+    <p>Davao Vision Colleges, Inc. is a school that doesnt just teach academic lessons but also instill servant-leader values and godly characteristics - thanks to its weekly chapel service. Established in 2007, it upholds
+      the mission of delivering quality education and service excellence. The college continues
+      to nurture future leaders and innovators, staying true to its vision of valuing life through
+      excellence in education.</p>
+  </section>
+  
+  <section id = "timeline">
+  <h2>Davao Vision Colleges Timeline History</h2>
+
+  <div class="timeline-container">
+
+    <div class="timeline-item">
+      <div class="timeline-date">2007</div>
+      <div class="timeline-content"> 
+        <p>Rev. Dr. Kim Won Sun, Senior Pastor and Chairman of Yeomchang Presbyterian Church in Seoul, envisioned creating a non-sectarian school to train students as knowledgeable, value-driven leaders and missionaries. With the help of Rev. David Sang in Davao City, three hectares of land were purchased for the school site. Key contributors to 
+		founding Davao Vision Colleges (DVC) included Rev. Iluminado D. Macahig Jr., Dr. Cheol Woo Lee, and other dedicated Korean missionaries.</p>
+      </div>
+    </div>
+
+    <div class="timeline-item">
+      <div class="timeline-date">2008</div>
+      <div class="timeline-content">
+        <p>Rev. Kim In Han, a Korean missionary from Seoul, helped manage the college finances and oversee construction. During the CHED recognition process, Dr. Fidel D. Japos of DepEd Regional Office XI, Dr. Rosita J. Bustamante of CHED Regional Office XI, and Rev. Abdon C. Canonoy Jr., a former college dean, 
+		provided valuable assistance in preparing and submitting the required documents. A College Board officially established in April 2008. The SEC registration was formally approved
+		on April 30, 2008 and in February 2009. CHED granted permits for the following degree programs: Bachelor of Arts in Theology, Bachelor of Science in Business Administration,
+		Bachelor of Elementary Education, Bachelor of Secondary Education and Bachelor of Science in Information Technology.</p>
+      </div>
+    </div>
+
+    <div class="timeline-item">
+      <div class="timeline-date">2010</div>
+      <div class="timeline-content">
+        <p>A new missionary couple, Engr. Yoom Bum Eul and Mrs. Kim Won Suk took over the financial administration and missionary responsibilities of the college.
+		They served faithfully until 2023. Under their leadership, the partnership between DVC and Yeochang Church deepened, and the college experienced remarkable growth,
+		from just 70 students in its early years to over 800 students.</p>
+      </div>
+    </div>
+
+    <div class="timeline-item">
+      <div class="timeline-date">2023</div>
+      <div class="timeline-content">
+        <p>DVC underwent a significant administrative transition as Dr. Youjin Chung succeeded Mr. Yoon Bum Eul, who had led the institution faithfully for 
+		13 years. Under Dr. Chung's leadership, the college embraced a renewed vision for its mission and future development.</p>
+      </div>
+    </div>
+
+    <div class="timeline-item">
+      <div class="timeline-date">2024</div>
+      <div class="timeline-content">
+        <p>By the Academic Year 2024-2025, Davao Vision Colleges reached a new milestone, with an enrollment of 962 students and a dedicated team of 30 faculty and staff.</p>
+      </div>
+    </div>
+
+  </div>
+  </section>
+  
+  <section id="vmv">
+  <style>
+    #vmv {
+      padding: 50px;
+      background-color: #f2f7fc;
+      text-align: center;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    #vmv h2 {
+      color: #002b5c;
+      margin-bottom: 30px;
+      font-size: 2em;
+    }
+
+    .vmv-landscape {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+    }
+
+    .vmv-box {
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      padding: 25px;
+      width: 300px;
+      text-align: left;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .vmv-box:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+    }
+
+    .vmv-box h3 {
+      color: #003366;
+      border-bottom: 2px solid #003366;
+      padding-bottom: 8px;
+      margin-bottom: 12px;
+    }
+
+    .vmv-box p,
+    .vmv-box li {
+      line-height: 1.6;
+      margin-bottom: 8px;
+      color: #333;
+    }
+
+    .vmv-box ul {
+      padding-left: 20px;
+    }
+  </style>
+
+  <h2>Vision, Mission & Core Values</h2>
+
+  <div class="vmv-landscape">
+    <!-- Vision -->
+    <div class="vmv-box">
+      <h3>Vision</h3>
+      <p>
+       A missional institution committed for holistic transformative education to make an imoact to the society.
+      </p>
+    </div>
+
+    <!-- Mission -->
+    <div class="vmv-box">
+      <h3>Mission</h3>
+      <p>
+       To provide innovative and quality education, engage in robust research and community extension, training, and mentoring students to think globally, act locally\
+	   and serve cross-culturally.
+      </p>
+    </div>
+
+    <!-- Core Values -->
+    <div class="vmv-box">
+      <h3>Core Values</h3>
+      <ul>
+        <li><strong>D</strong> Dynamic</li>
+        <li><strong>V</strong> Vissionary</li>
+        <li><strong>C</strong> Cross-Cultural</li>
+        <li><strong>M</strong> Mission-Oriented</li>
+        <li><strong>I</strong> Inspirational</li>
+		<li><strong>S</strong> Servant Leadership</li>
+		<li><strong>S</strong> Stewardship</li>
+		<li><strong>I</strong> Internalization</li>
+		<li><strong>O</strong> One Team, One Dream</li>
+		<li><strong>N</strong> Novelty/Nobility</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+  <!-- Admissions Section (Landscape Layout, No Images) -->
+<section id="admissions">
+  <style>
+    #admissions {
+      padding: 50px;
+      background-color: #f9f9f9;
+      text-align: center;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    #admissions h2 {
+      color: #002b5c;
+      margin-bottom: 30px;
+      font-size: 2em;
+    }
+
+    .admission-landscape {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+    }
+
+    .admission-box {
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      padding: 20px;
+      width: 300px;
+      text-align: left;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .admission-box:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+    }
+
+    .admission-box h3 {
+      color: #003366;
+      border-bottom: 2px solid #003366;
+      padding-bottom: 8px;
+      margin-bottom: 12px;
+    }
+
+    .admission-box h4 {
+      color: #0055aa;
+      margin-top: 10px;
+      margin-bottom: 6px;
+    }
+
+    .admission-box ul,
+    .admission-box ol {
+      padding-left: 20px;
+    }
+
+    .admission-box li {
+      margin-bottom: 6px;
+      line-height: 1.5;
+    }
+
+    .apply-btn {
+      display: block;
+      margin-top: 15px;
+      background-color: #003366;
+      color: white;
+      border: none;
+      padding: 10px 15px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-weight: bold;
+      text-align: center;
+      width: 100%;
+      transition: background-color 0.3s ease;
+    }
+
+    .apply-btn:hover {
+      background-color: #0055aa;
+    }
+  </style>
+
+  <h2>Admissions</h2>
+  <div class="admission-landscape">
+    <!-- Left Column -->
+    <div class="admission-box">
+      <h3>Admission Requirements</h3>
+      <ul>
+        <li>Completed Application Form</li>
+        <li>Form 138 (Report Card)</li>
+        <li>Certificate of Good Moral Character</li>
+        <li>2 pcs. 2x2 ID Picture (white background)</li>
+        <li>Birth Certificate (PSA Copy)</li>
+        <li>Entrance Examination Result</li>
+      </ul>
+    </div>
+
+    <!-- Middle Column (Offered Courses) -->
+    <div class="admission-box">
+      <h3>Offered Courses</h3>
+
+      <h4>College Programs</h4>
+      <ul>
+        <li>Bachelor of Secondary Education Major in English</li>
+        <li>Bachelor of Secondary Education Major in Mathematics</li>
+        <li>Bachelor of Elementary Education</li>
+        <li>Bachelor of Science in Information Technology</li>
+        <li>Bachelor of Arts in Theology</li>
+      </ul>
+
+      <h4>Senior High School Programs</h4>
+      <ul>
+        <li>STEM (Science, Technology, Engineering, and Mathematics)</li>
+        <li>HUMSS (Humanities and Social Sciences)</li>
+        <li>GAS (General Academic Strand)</li>
+        <li>TVL-ICT (Technical-Vocational-Livelihood ICT)</li>
+        <li>ABM (Accountancy, Business and Management)</li>
+      </ul>
+    </div>
+
+    <!-- Right Column -->
+    <div class="admission-box">
+      <h3>Steps to Apply</h3>
+      <ol>
+        <li>Visit the DVC Admission Office or apply online.</li>
+        <li>Submit all required documents.</li>
+        <li>Take the entrance exam and interview.</li>
+        <li>Wait for admission confirmation.</li>
+        <li>Pay enrollment fees and attend orientation.</li>
+      </ol>
+
+      <button class="apply-btn">Apply Now</button>
+    </div>
+  </div>
+</section>
+
+
+  <!-- Campus Life Section -->
+  <section id="campus">
+    <h2>Campus Life</h2>
+    <p>Experience vibrant campus life, grow your talents, and build friendships in a Christ-centered environment.</p>
+    <div class="image-row">
+      <img src="https://scontent.fdvo2-1.fna.fbcdn.net/v/t39.30808-6/573560797_2605333326509134_5287575359387751902_n.jpg?_nc_cat=108&ccb=1-7&_nc_sid=127cfc&_nc_eui2=AeGb9EeonVYawMab--7jRHxPkmVKmJIXAVKSZUqYkhcBUoZKSdCqo30_dQK8qWkTHFR2snlfIWbyio5RciVCQg8t&_nc_ohc=Chd80GYBlz4Q7kNvwFy0WKP&_nc_oc=AdlM-P8KIhVJ4DgtEROIhIWi9wOK0fceVH_LLDbSl6gFpGE1jpOAAvUG8Olli1TvYfo&_nc_zt=23&_nc_ht=scontent.fdvo2-1.fna&_nc_gid=i4sx-edlmGKmI8_gyJSkgw&oh=00_AfikNQVwudpgLfFa00mubp1nlLijSP76o-ZC0gsV5HX5bw&oe=690D0611" alt="Campus 1">
+      <img src="https://scontent.fdvo2-2.fna.fbcdn.net/v/t39.30808-6/575165169_2605333443175789_7030780776321963939_n.jpg?_nc_cat=106&ccb=1-7&_nc_sid=127cfc&_nc_eui2=AeHTr7yaawOZ7HO0lY_CO4qroU4RttzEHs2hThG23MQezc0AWTRMSzLPBTgGCCVkC-xaC64g5RQtSlZJkpaLjYzG&_nc_ohc=Fqnvy79d5EQQ7kNvwG_USQC&_nc_oc=AdkEc-vTgOCMZWUfku38pikVizJ3JZ-o2ijXu_5E6wNegxTwLh6e1RHT7PDcW7a0elA&_nc_zt=23&_nc_ht=scontent.fdvo2-2.fna&_nc_gid=CFG7os_LGHtvVHdhCHNl8Q&oh=00_AfiludTXa5kWVg71Pvgr5AzuqTQV6gWz5yjYmR7MALGpHA&oe=690CFC42" alt="Campus 2">
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact">
+    <h2>Contact Us</h2>
+    <p>Email: davaovision@gmail.com<br>
+    Phone: +63 951 1649 654<br>
+    Address: Stone Rock Village, Catalunan Grande, Davao City</p>
+    <div class="image-row">
+      <img src="https://scontent.fdvo2-2.fna.fbcdn.net/v/t39.30808-6/574495688_2602898143419319_8306359931824550299_n.jpg?_nc_cat=107&ccb=1-7&_nc_sid=127cfc&_nc_eui2=AeF7yHD8ltIN26FAMauiNi7tnWTnkFBehnydZOeQUF6GfJX0G-N_ZVifeBOrHvmmen7XMEkBan20rKkFC1f63Fex&_nc_ohc=1NdisIA0N2sQ7kNvwGJTrfg&_nc_oc=AdlXJsZZtVIxdYg8hJy11GcDA0N5-OOSZCgqUaqx76jHwuZiv5A3NimW5b0dVG2mzkg&_nc_zt=23&_nc_ht=scontent.fdvo2-2.fna&_nc_gid=AMfcRfTdhVoLmiwjQskZUg&oh=00_AfehfS_nDPoPW4fAEmP4ZjYO4HbszZcjobspdgmVvpAP3g&oe=690A1231" alt="Map 1">
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p>Â© 2025 Davao Vision Colleges, Inc. | All Rights Reserved</p>
+  </footer>
+
+</body>
+</html>
